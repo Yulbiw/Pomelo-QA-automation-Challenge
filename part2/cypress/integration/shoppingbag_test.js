@@ -51,4 +51,13 @@ describe('Shopping bag test', () => {
         
         cy.get('.cart-remove').click();
     });
+
+    it('Validate checkout', () => {
+        cy.get('button > span').contains('proceed to Checkout').click();
+        cy.get('.auth__title').contains('Log In').should('be.visible');
+        cy.wait(2000);
+
+        cy.get('.auth__close').click();
+        cy.get('.cart-remove').click();
+    });
 });
