@@ -37,4 +37,18 @@ describe('Shopping bag test', () => {
         cy.wait(4000);
         cy.get('.empty-cart__title').contains('Your Bag is Empty').should('be.visible');
     });
+
+    t('Apply promo code', () => {
+        cy.get('input[placeholder="Enter Promo Code"]').type('mypromocode');
+        cy.get('button > span').contains('Apply').click();
+        cy.wait(500);
+        cy.get('.pomelo-snack-bar__content').contains('Invalid voucher code').should('be.visible');
+        
+        cy.get('input[placeholder="Enter Promo Code"]').type('NC02TH');
+        cy.get('button > span').contains('Apply').click();
+        cy.wait(500);
+        cy.get('.pomelo-snack-bar__content').contains('You cannot use this voucher').should('be.visible');
+        
+        cy.get('.cart-remove').click();
+    });
 });
