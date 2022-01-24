@@ -17,4 +17,12 @@ describe('Shopping bag test', () => {
 
         cy.get('.cart-remove').click();
     });
+
+    it('Adjusting product size', () => {
+        cy.get('.cart-item-info__size select').eq(0).select('L');
+        cy.wait(4000);
+        cy.get('.cart-item-info__size select option:selected').eq(0).should('have.text', 'L');
+
+        cy.get('.cart-remove').click();
+    });
 });
