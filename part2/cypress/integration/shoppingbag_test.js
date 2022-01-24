@@ -25,4 +25,16 @@ describe('Shopping bag test', () => {
 
         cy.get('.cart-remove').click();
     });
+
+    it('Adjust and Delete product', () => {
+        cy.get('.cart-item-info__quantity select').eq(0).select('2');
+        cy.wait(4000);
+
+        cy.get('.cart-item-info__size select').eq(0).select('L');
+        cy.wait(4000);
+        
+        cy.get('.cart-remove').click();
+        cy.wait(4000);
+        cy.get('.empty-cart__title').contains('Your Bag is Empty').should('be.visible');
+    });
 });
