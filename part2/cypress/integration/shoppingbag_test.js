@@ -38,7 +38,7 @@ describe('Shopping bag test', () => {
         cy.get('.empty-cart__title').contains('Your Bag is Empty').should('be.visible');
     });
 
-    t('Apply promo code', () => {
+    it('Apply promo code', () => {
         cy.get('input[placeholder="Enter Promo Code"]').type('mypromocode');
         cy.get('button > span').contains('Apply').click();
         cy.wait(500);
